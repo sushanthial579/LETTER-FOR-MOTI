@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>greeting letter</title>
+  <style>
+    * { box-sizing: border-box; font-family: "Poppins", system-ui, sans-serif; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      overflow-x: auto; /* horizontal scroll enabled */
+    }
+    
+    
+    .container {
+      width: 100%;
+      max-width: 520px; /* allows slight horizontal scrolling on mobile */
+      background: white;
+      border-radius: 22px;
+      padding: 22px 18px;
+      box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+      text-align: center;
+      position: relative;
+    }
+    
+    h1 {
+      font-size: 1.6rem; /* easy to read on mobile */
+      margin-bottom: 10px;
+      color: #ff5a7a;
+      line-height: 1.3;
+    }
+    p {
+      font-size: 1.05rem; /* readable text size */
+      color: #444;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    input {
+      width: 100%; padding: 14px; border-radius: 12px;
+      border: 1px solid #ddd; font-size: 1rem; text-align: center;
+      margin-bottom: 12px;
+    }
+    button {
+      width: 100%;
+      padding: 15px;
+      border-radius: 14px;
+      border: none;
+      background: #ff5a7a;
+      color: white;
+      font-size: 1.05rem;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+    .hidden { display: none; }
+    .error { color: red; font-size: 0.9rem; display: none; }
+    .heart { font-size: 3rem; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%{transform:scale(1);}50%{transform:scale(1.2);}100%{transform:scale(1);} }
+    .floating-heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 1.5rem;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.7;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+    
+    @keyframes floatUp {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-120vh); }
+    }
+    img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 16px;
+      margin-bottom: 14px;
+      display: block;
+    }
+  @keyframes confettiFall {
+      to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="cutu.mpeg" type="audio/mpeg">
+</audio>
+<audio id="voiceMessage">
+  <source src="Recording (3).m4a" type="audio/mpeg">
+</audio>
+
+<!-- MUSIC CONTROLS -->
+<div id="musicControls" style="position:fixed;bottom:12px;right:12px;background:white;padding:10px 12px;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,0.2);display:flex;gap:10px;align-items:center;z-index:9999;">
+  <button onclick="toggleMusic()" style="padding:8px 10px;font-size:0.9rem;">⏯</button>
+  <input type="range" min="0" max="1" step="0.01" value="0.5" onchange="setVolume(this.value)" />
+</div>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="cutu.mpeg" type="audio/mpeg">
+</audio>
+
+<!-- LOCK SCREEN -->
+<div class="container" id="lockScreen">
+  <h1>🔒 Locked Page</h1>
+  <p>Greeting for <b>My cutu</b> 💕</p>
+  <input type="password" id="password" placeholder="Enter password" />
+  <button onclick="unlock()">Unlock</button>
+  <div class="error" id="error">Wrong password my jaan 💔</div>
+</div>
+
+<!-- PAGE 1 -->
+<div class="container hidden" id="page1">
+  <div class="heart">❤️</div>
+  <h1>MOTU </h1>
+
+<img src="B.JPEG" alt="You and I" />
+  <p>My dearest <b>MOTU</b> 💖</p>
+  <p>Tomorrow the calendar changes, the year changes…but one thing I never want to change is you being in my life 🌸</p>
+  <p> As 2026 arrives, I find myself thinking about how lucky I am to have you .
+In a  world🌍 full of noise, you are my calm.
+In days full of chaos, you are my smile.
+And in moments when I feel low, somehow your presence—even in thoughts—makes everything feel lighter 😊💖</p>
+  
+  
+  
+  
+  
+  <button onclick="nextPage('page1','page2')">Next ➡️</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="container hidden" id="page2">
+  <h1>Us 💑</h1>
+  <img src="leo.JPEG" alt="You and I" />
+  <p>Every moment with you feels magical ✨</p>
+  <p> You may not realize it, but you’ve become a part of my everyday happiness.<br>
+  <P>Your words stay with me longer than you know, your laughter echoes in my mind,
+and your importance in my life is something I can never put into simple sentences 💝<br>
+<p>  "HAPPY NEW YEAR MY CUTU "🥂💖</p>
+<p>This year, I wish you:<br>
+<p>• endless reasons to smile 😊<br>
+<p>• strength for every challenge 💪<br>
+<p>• and happiness so deep that it finds you even on ordinary days ✨<br>
+
+
+  <button onclick="nextPage('page2','page3')">Next ➡️</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="container hidden" id="page3">
+  <h1>My New Year Promise to You🤞</h1>
+  <img src="A.JPEG" alt="You and I" />
+
+  <P>As this new year begins, I promise you this—<br>
+  <p>I’ll stand by you on your happiest days and your toughest nights.
+I’ll be your safe place when the world feels heavy,
+and your loudest cheer when you chase your dreams.<br>
+
+<p>I promise to listen without judging,
+to care without conditions,
+and to stay—even when things aren’t easy.<br>
+
+<p>No matter how much life changes,
+our bond will always matter to me.
+This year, and every year after,
+you’ll never walk alone… because I’m right here.<br>
+
+ <p>  "HAPPY NEW YEAR MY CUTU "🥂💖</p>
+ <P>You’re not just part of my year—you’re part of my life.</P>
+ <p> Forever yours, with all my love and longing,</p>
+<p>YOUR HARAMI DOST🎀</p>
+
+
+
+
+  <button onclick="nextPage('page3','page4')">Next ➡️</button>
+</div>
+
+<!-- FINAL PAGE -->
+<div class="container hidden" id="page4">
+  <h1>One Question</h1>
+  <img src="IMG77.JPEG" alt="You and I" />
+  <p>Oii MOTI, will you be mine bestie forever?</p>
+  <P>AGAIN "HAPPY NEW YEAR MY CUTU "🥂💖</p></P>
+  <button onclick="celebrate()">YES 💖</button>
+<button onclick="celebrate()">NO 💔</button>
+
+
+</div>
+
+<script>
+  function unlock() {
+    const pass = document.getElementById('password').value;
+    if (pass === 'CUTU') {
+      document.getElementById('lockScreen').classList.add('hidden');
+      document.getElementById('page1').classList.remove('hidden');
+      const music = document.getElementById('bgMusic');
+      music.volume = 0.5;
+      music.play();
+      startHearts();
+    } else {
+      document.getElementById('error').style.display = 'block';
+    }
+  
+  }
+  function nextPage(current, next) {
+    document.getElementById(current).classList.add('hidden');
+    document.getElementById(next).classList.remove('hidden');
+  }
+  function startHearts() {
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.innerText = '❤️',"💝"," 🌹";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 800);
+  }
+  function celebrate() {
+    playVoice();
+    for (let i = 0; i < 80; i++) {
+      const confetti = document.createElement('div');
+      confetti.style.position = 'fixed';
+      confetti.style.width = '8px';
+      confetti.style.height = '8px';
+      confetti.style.background = ['#ff5a7a','#ffd700','#7bed9f','#70a1ff'][Math.floor(Math.random()*4)];
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.top = '-10px';
+      confetti.style.borderRadius = '50%';
+      confetti.style.zIndex = 9999;
+      confetti.style.animation = 'confettiFall 3s linear forwards';
+      document.body.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 3000);
+    }
+  }
+  function playVoice() {
+    document.getElementById('voiceMessage').play();
+  }
+  function toggleMusic() {
+    const music = document.getElementById('bgMusic');
+    if (music.paused) {
+      music.play();
+    } else {
+      music.pause();
+    }
+  }
+  function setVolume(val) {
+    document.getElementById('bgMusic').volume = val;
+  }
+</script>
+
+</body>
+</html>
